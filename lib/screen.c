@@ -75,6 +75,15 @@ color getscreenpixel(int x, int y)
 	return ret;
 }
 
+color makecolor(unsigned char r, unsigned char g, unsigned char b)
+{
+	color ret;
+	ret.r = r;
+	ret.g = g;
+	ret.b = b;
+	return ret;
+}
+
 int coloristolerantof(color a, color b, unsigned char tolerance)
 {
 	return (abs(a.r - b.r) <= tolerance &&
@@ -108,4 +117,9 @@ int waitforpx(int x, int y, color waitcolor, unsigned char tolerance, int timeou
 int waitforpxnot(int x, int y, color waitcolor, unsigned char tolerance, int timeout)
 {
 	return waitforpxbase(x, y, waitcolor, tolerance, timeout, 0);
+}
+
+int waitforpxchange(int x, int y, unsigned char tolerance, int timeout)
+{
+	return waitforpxnot(x, y, getscreenpixel(x, y), tolerance, timeout);
 }

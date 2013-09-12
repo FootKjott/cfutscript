@@ -26,10 +26,16 @@ void freeimage(image img);
 
 color getscreenpixel(int x, int y);
 
+color makecolor(unsigned char r, unsigned char g, unsigned char b);
+
+int coloristolerantof(color a, color b, unsigned char tolerance);
+
 int waitforpxbase(int x, int y, color waitcolor, unsigned char tolerance, int timeout, int is);
 
 int waitforpx(int x, int y, color waitcolor, unsigned char tolerance, int timeout);
 
 int waitforpxnot(int x, int y, color waitcolor, unsigned char tolerance, int timeout);
+
+int waitforpxchange(int x, int y, unsigned char tolerance, int timeout);
 
 #endif
